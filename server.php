@@ -34,19 +34,23 @@
 
 		if (count($errors) == 0) {
 
-            $query = "SELECT username FROM Login WHERE username = '$username'";
+      $query = "SELECT username FROM Login WHERE username = '$username'";
 			$risultato = mysql_query($query, $db);
 			$num = mysql_num_rows ($risultato);
-			if($num == '0'){
+
+			if($num == '0')
+			{
 			$password = md5($password_1);
 			$query = "INSERT INTO Login (cognome, nome, username, password, ruolo)
-					  VALUES('$cognome', '$nome', '$username', '$password', 0)";
+					  		VALUES('$cognome', '$nome', '$username', '$password', 0)";
 			mysqli_query($db, $query);
 
 			$_SESSION['username'] = $username;
 			$_SESSION['success'] = "Sei stato loggato!";
 			header('location: index.php');
-			}else{
+			}
+			else
+			{
 			array_push($errors, "Username già utilizzato");
 			}
 
