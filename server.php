@@ -1,4 +1,4 @@
-<?php 
+<?php
 	session_start();
 
 	// non si sa mai
@@ -7,13 +7,13 @@
     $nome   = "";
     $password   = "";
     $num = "";
-	$errors = array(); 
+	$errors = array();
 	$_SESSION['success'] = "";
 
 	// DATABASE
 	$db = mysqli_connect('localhost', 'angelozeva', '', 'my_angelozeva');
 
-	// REGISTRAZIONE
+	// REGISTRAZIONE UTENTE
 	if (isset($_POST['reg_user'])) {
 		$cognome = mysqli_real_escape_string($db, $_POST['cognome']);
         	$nome = mysqli_real_escape_string($db, $_POST['nome']);
@@ -21,7 +21,7 @@
 		$password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
 		$password_2 = mysqli_real_escape_string($db, $_POST['password_2']);
 
-		
+
 		if (empty($cognome)) { array_push($errors, "Mi serve il tuo cognome"); }
 		if (empty($nome)) { array_push($errors, "Mi serve il tuo nome"); }
         if (empty($username)) { array_push($errors, "Mi serve l'username"); }
@@ -31,15 +31,15 @@
 			array_push($errors, "Le due password non coincidono");
 		}
 
-		
+
 		if (count($errors) == 0) {
-        	
+
             $query = "SELECT username FROM Login WHERE username = '$username'";
 			$risultato = mysql_query($query, $db);
 			$num = mysql_num_rows ($risultato);
 			if($num == '0'){
 			$password = md5($password_1);
-			$query = "INSERT INTO Login (cognome, nome, username, password, ruolo) 
+			$query = "INSERT INTO Login (cognome, nome, username, password, ruolo)
 					  VALUES('$cognome', '$nome', '$username', '$password', 0)";
 			mysqli_query($db, $query);
 
@@ -49,12 +49,12 @@
 			}else{
 			array_push($errors, "Username già utilizzato");
 			}
-            
+
 		}
 
 	}
 
-	// ... 
+	// ...
 
 	// LOGIN
 	if (isset($_POST['login_user'])) {
