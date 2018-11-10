@@ -32,11 +32,12 @@
 		}
 
 
-		if (count($errors) == 0) {
+		if (count($errors) == NULL) {
 
             $query = "SELECT username FROM Login WHERE username = '$username'";
 			$risultato = mysql_query($query, $db);
 			$num = mysql_num_rows ($risultato);
+
 			//debugging
 
 			$message = $num;
