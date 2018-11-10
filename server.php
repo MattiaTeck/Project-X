@@ -38,10 +38,6 @@
 			$risultato = mysql_query($query, $db);
 			$num = mysql_num_rows ($risultato);
 
-			//debugging
-
-			echo "<script type='text/javascript'>alert('$num');</script>";
-
 			if($num == NULL){
 			$password = md5($password_1);
 			$query = "INSERT INTO Login (cognome, nome, username, password, ruolo)
