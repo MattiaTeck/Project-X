@@ -40,8 +40,8 @@
 
 			if($num == NULL){
 			$password = md5($password_1);
-			$query = "INSERT INTO Login (cognome, nome, username, password, ruolo)
-					  VALUES('$cognome', '$nome', '$username', '$password', 0)";
+			$query = "INSERT INTO Login (cognome, nome, username, password)
+					  VALUES('$cognome', '$nome', '$username', '$password')";
 			mysqli_query($db, $query);
 
 			$_SESSION['username'] = $username;
@@ -84,4 +84,5 @@
 		}
 	}
 
-?>
+?>
+
