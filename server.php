@@ -37,6 +37,9 @@
       $query = "SELECT username FROM Login WHERE username = '$username'";
 			$risultato = mysql_query($query, $db);
 			$num = mysql_num_rows ($risultato);
+//ALERT UTILIZZATO PER DEBUGGING
+			$message = $num;
+			echo "<script type='text/javascript'>alert('$message');</script>";
 
 			if($num == '0')
 			{
