@@ -16,7 +16,7 @@
 	// REGISTRAZIONE UTENTE
 	if (isset($_POST['reg_user'])) {
 		$cognome = mysqli_real_escape_string($db, $_POST['cognome']);
-        	$nome = mysqli_real_escape_string($db, $_POST['nome']);
+    $nome = mysqli_real_escape_string($db, $_POST['nome']);
 		$username = mysqli_real_escape_string($db, $_POST['username']);
 		$password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
 		$password_2 = mysqli_real_escape_string($db, $_POST['password_2']);
@@ -32,7 +32,7 @@
 		}
 
 
-		if (count($errors) == NULL) {
+		if (count($errors) == 0) {
 
       $query = "SELECT username FROM Login WHERE username = '$username'";
 			$risultato = mysql_query($query, $db);
@@ -42,7 +42,7 @@
 
 			echo "<script type='text/javascript'>alert('$num');</script>";
 
-			if($num == '0'){
+			if($num == NULL){
 			$password = md5($password_1);
 			$query = "INSERT INTO Login (cognome, nome, username, password, ruolo)
 					  VALUES('$cognome', '$nome', '$username', '$password', 0)";
