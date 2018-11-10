@@ -37,6 +37,11 @@
             $query = "SELECT username FROM Login WHERE username = '$username'";
 			$risultato = mysql_query($query, $db);
 			$num = mysql_num_rows ($risultato);
+			//debugging
+
+			$message = $num;
+			echo "<script type='text/javascript'>alert('$message');</script>";
+
 			if($num == '0'){
 			$password = md5($password_1);
 			$query = "INSERT INTO Login (cognome, nome, username, password, ruolo)
